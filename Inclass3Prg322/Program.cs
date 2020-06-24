@@ -14,13 +14,13 @@ namespace Inclass3Prg322
                 con.Open();
                 Console.WriteLine($"MySQL version: {con.ServerVersion}");
 
-            var stm = "SELECT VERSION()";
-            var cmd = new MySqlCommand(stm, con);
+            customerReader customerReader = new customerReader(con);
 
-            var version = cmd.ExecuteScalar().ToString();
-            Console.WriteLine($"MySQL version: {version}");
+            customerReader.readAllData();
 
-            insertData(con);
+       
+
+            
             
 
 
@@ -28,13 +28,7 @@ namespace Inclass3Prg322
 
 
         }
-        private static void insertData(MySqlConnection con)
-        {
-            var stm = "Insert into cars (name, price) valuse ('Porche', '19999999')";
-            var cmd = new MySqlCommand(stm, con);
-            cmd.ExecuteNonQuery();
-        }
-
+      
 
 
     }
